@@ -581,6 +581,24 @@ a:hover { text-decoration: none; }
 }
 
 /* ============================================================
+   關於作者
+   ============================================================ */
+
+.author-wrap { display: grid; gap: 1.75rem; }
+/* 不做圓形頭像：那是形象網站的長相，而且他要放的是工作中的照片，
+   裁成圓形會切掉一半情境。跟站上其他照片一致用圓角方框。 */
+.author-photo .photo { max-width: 10rem; }
+.author-text h3 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+.author-title { font-size: 0.9375rem; color: var(--gen); letter-spacing: 0.06em; margin-bottom: 1.25rem; }
+.author-text p { font-size: 1.0625rem; }
+.author-link { margin-block-start: 1.25rem; font-size: 1rem; }
+
+@media (min-width: 40rem) {
+  .author-wrap { grid-template-columns: 10rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+  .author-photo .photo { max-width: none; }
+}
+
+/* ============================================================
    第七幕：三個入口
    ============================================================ */
 

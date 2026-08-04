@@ -482,6 +482,24 @@ function act6() {
 </section>`;
 }
 
+function authorSection() {
+  const a = C.author;
+  if (!a) return '';
+  const url = link(a.linkKey);
+  return `<section id="${a.id}" class="act act-author" aria-labelledby="author-h">
+  <div class="wrap author-wrap">
+    <div class="author-photo">${photo(a.photo, { small: true })}</div>
+    <div class="author-text">
+      <p class="eyebrow" id="author-h">${esc(a.eyebrow)}</p>
+      <h3>${esc(a.name)}</h3>
+      <p class="author-title">${esc(a.title)}</p>
+      ${paras(a.paragraphs)}
+      ${url ? `<p class="author-link"><a href="${attr(url)}"${ext(url)}>${esc(a.linkLabel)} →</a></p>` : ''}
+    </div>
+  </div>
+</section>`;
+}
+
 function act7() {
   const a = C.act7;
   const exits = a.exits.map((e) => {
@@ -605,7 +623,9 @@ const jsonLd = `
   author: { '@type': 'Person', name: config.author, jobTitle: config.authorTitle },
 })}</script>`;
 
-const home = [act1(), act2(), act3(), act4(), act5(), act6(), act7(), postsSection(posts)].join('\n\n');
+// 作者介紹放在書之後、三個入口之前：讀者讀完論證想知道「這是誰在說」，
+// 而且它讓後面的「認識團督演練專班」更站得住腳。
+const home = [act1(), act2(), act3(), act4(), act5(), act6(), authorSection(), act7(), postsSection(posts)].join('\n\n');
 
 writeFileSync(join(OUT, 'index.html'), layout({
   title: `${config.title}｜${config.tagline}`,
