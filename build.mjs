@@ -232,7 +232,10 @@ function floatbarHtml() {
 function layout({ title, description, content, depth = 0, pageSlug, ogImage, ogType, pagePath, bodyClass = '', jsonLd = '', floatbar = '' }) {
   const base = depth > 0 ? '../'.repeat(depth) : '';
   const year = new Date().getFullYear();
-  const canonical = absUrl(pagePath);
+  // 首頁的 pagePath 是空字串，不能走 absUrl()（它遇到空值會回空字串，
+  // 結果首頁沒有 canonical 也沒有 og:url —— 最重要的一頁反而漏掉）。
+  const siteBase = (config.baseUrl || '').replace(/\/+$/, '');
+  const canonical = siteBase ? `${siteBase}/${String(pagePath || '').replace(/^\/+/, '')}` : '';
   const og = absUrl(ogImage);
 
   return `<!doctype html>
