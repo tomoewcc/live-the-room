@@ -263,7 +263,7 @@ function layout({ title, description, content, depth = 0, pageSlug, ogImage, ogT
 <meta name="twitter:description" content="${attr(description || '')}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="${base}assets/style.css">
 <link rel="icon" type="image/svg+xml" href="${base}assets/favicon.svg">
 <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">

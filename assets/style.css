@@ -19,14 +19,6 @@
   line-gap-override: 0%;
   size-adjust: 100%;
 }
-@font-face {
-  font-family: "TCSerifFallback";
-  src: local("Songti TC"), local("Source Han Serif TC"), local("Noto Serif CJK TC"), local("PMingLiU");
-  ascent-override: 116%;
-  descent-override: 32%;
-  line-gap-override: 0%;
-  size-adjust: 100%;
-}
 
 :root {
   /* 內文欄寬 600px ≈ 每行 30 個中文字。The Pudding 用 ~500px，
@@ -56,7 +48,9 @@
 
   --radius: 10px;
   --font: "Noto Sans TC", "TCFallback", "PingFang TC", "Heiti TC", "Microsoft JhengHei", system-ui, sans-serif;
-  --font-display: "Noto Serif TC", "TCSerifFallback", "Songti TC", "Source Han Serif TC", serif;
+  /* 標題也用黑體。試過思源宋體，繁中在螢幕上（尤其細體）並不好看，
+     拉丁字還行、漢字很糊。統一回黑體。 */
+  --font-display: var(--font);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,10 +94,10 @@ body {
 
 img, svg, video, iframe { max-width: 100%; height: auto; display: block; }
 
-/* 標題一律襯線、行高緊（Apple 與 Patagonia 都是 1.1） */
+/* 標題行高緊（Apple 與 Patagonia 都是 1.1）。黑體要夠粗才撐得住大字級。 */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.1;
   margin: 0;
 }
@@ -200,12 +194,14 @@ a:hover { text-decoration: none; }
   min-width: 0;
 }
 
+/* 別佔滿整個首屏 —— 破題那兩句必須跟文字雲一起出現在第一畫面，
+   否則讀者只看到一堆活動名稱，不知道這頁在幹嘛。 */
 .flood {
-  min-height: 62vh;
+  min-height: 44vh;
   position: relative;
   display: flex;
   align-items: center;
-  padding-block: 1.5rem;
+  padding-block: 1.25rem;
 }
 
 /* 四散：flex-wrap 而不是絕對定位 —— 絕對定位在窄螢幕一定會疊字或破框，
@@ -255,10 +251,9 @@ a:hover { text-decoration: none; }
 .flood-list .d2 { color: var(--gen-soft); }
 .flood-list .d3 { color: var(--gen-faint); }
 
-/* 大字用襯線，讓雲有層次而不只是大小不同 */
+/* 大字加粗，讓雲的層次不只靠大小 */
 .flood-list .s4, .flood-list .s5 {
-  font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 500;
 }
 
 /* 資訊流跑完之前先藏起落點文案與主標，否則讀者會先讀到答案。
@@ -274,7 +269,7 @@ a:hover { text-decoration: none; }
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 5.5vw, 1.875rem);   /* 24 → 30px */
   line-height: 1.45;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 0.75rem;
 }
 .stop-line-2 { color: var(--field); }
@@ -292,7 +287,7 @@ a:hover { text-decoration: none; }
   /* 13.5vw 的上限：主標是 6 個中文字，15vw 在 390px 寬的手機上會超出約 3px，
      害「來」單獨掉到第二行。CJK 不需要 letter-spacing，一併拿掉。 */
   font-size: clamp(2.75rem, 13.5vw, 7rem);     /* 44 → 112px */
-  font-weight: 300;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.08;
   margin-bottom: 0.6rem;
@@ -330,7 +325,7 @@ a:hover { text-decoration: none; }
   font-family: var(--font-display);
   font-size: clamp(1.375rem, 5vw, 1.625rem);   /* 22 → 26px */
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
   margin-block-end: 2.75rem;
 }
 
@@ -439,7 +434,7 @@ a:hover { text-decoration: none; }
 
 .verb {
   font-size: clamp(3rem, 13vw, 5rem);           /* 48 → 80px */
-  font-weight: 300;
+  font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.05;
   color: var(--field);
@@ -500,7 +495,7 @@ a:hover { text-decoration: none; }
 }
 .field-head h3 {
   font-size: clamp(1.75rem, 7vw, 2.75rem);      /* 28 → 44px */
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 
@@ -666,7 +661,7 @@ a:hover { text-decoration: none; }
 .post { padding-block: clamp(3rem, 10vw, 5rem); }
 .post h1 {
   font-size: clamp(2rem, 8vw, 3.25rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.1rem;
 }

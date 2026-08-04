@@ -19,7 +19,7 @@
     var items = Array.prototype.slice.call(flood.querySelectorAll('li'));
 
     // 手機減量：條目少一點，跑完的時間才不會拖太長
-    var limit = window.innerWidth < 640 ? 18 : items.length;
+    var limit = window.innerWidth < 640 ? 14 : items.length;
     items.slice(limit).forEach(function (li) { li.remove(); });
     items = items.slice(0, limit);
 
@@ -45,8 +45,9 @@
     if (reduce || !inViewAtLoad) {
       revealAll();
     } else {
-      // staged 由 JS 加上：沒有 JS 的瀏覽器一律看到完整內容，不會空白
-      if (act) act.classList.add('staged');
+      // 刻意不加 staged：那兩句話（AI 三十秒給一百個活動 / 但哪一個…）
+      // 是整頁的破題，藏起來等文字雲跑完，讀者一進來只看到一堆活動名稱，
+      // 根本不知道這頁在幹嘛。文字雲照樣動，但破題一開始就讀得到。
 
       // 文字雲的位置是固定的（只淡入，不佔位變化），所以要打亂顯示順序，
       // 答案才會在整片畫面各處冒出來，而不是照閱讀順序一路排過去。
