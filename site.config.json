@@ -8,8 +8,8 @@
   "authorTitle": "臨床心理師",
   "lang": "zh-Hant",
 
-  "//baseUrl": "正式網址。切到 improv.chiachipsy.com 之前先用 pages.dev，canonical 與 og:url 都吃這個值。",
-  "baseUrl": "https://live-the-room.pages.dev",
+  "//baseUrl": "正式網址，canonical 與 og:url 都吃這個值。pages.dev 仍可正常瀏覽，只是不當作正規網址。",
+  "baseUrl": "https://improv.chiachipsy.com",
 
   "//offline": "true = 只輸出告示頁，網路上讀不到內容",
   "offline": false,
