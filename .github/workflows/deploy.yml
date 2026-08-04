@@ -1,0 +1,34 @@
+name: Deploy to Cloudflare Pages
+
+# push 到 main 就把 docs/ 推上 Cloudflare Pages。
+#
+# 需要一個 repo secret：CLOUDFLARE_API_TOKEN
+#   Cloudflare 後台 → My Profile → API Tokens → Create Token
+#   → 範本選「Edit Cloudflare Workers」，或自訂權限 Account / Cloudflare Pages / Edit
+#   建好之後：gh secret set CLOUDFLARE_API_TOKEN --repo tomoewcc/live-the-room
+#
+# 沒設定這個 secret 之前，這個 workflow 會直接跳過，不會變成一直失敗的紅叉。
+#
+# 刻意不在 CI 裡跑 npm run build：文章的「更新日期」是讀 git commit 時間，
+# CI 的淺層 clone 會讓日期算錯。docs/ 已經進版控，直接部署那一份才正確。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: ${{ vars.CF_DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish docs/ to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy docs --project-name=live-the-room --branch=main
