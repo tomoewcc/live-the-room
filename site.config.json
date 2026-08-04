@@ -1,0 +1,37 @@
+{
+  "//": "全站設定。文案在 content.json，照片在 photos.json，這裡只放技術與外部連結。",
+
+  "title": "讓現場活起來",
+  "tagline": "AI 時代的即興力",
+  "description": "當 AI 能生成一切，我們更需要練習察覺、連結與回應。王家齊關於即興、心理治療演練、體驗式學習與《教學即興力》的實踐提案。",
+  "author": "王家齊",
+  "authorTitle": "臨床心理師",
+  "lang": "zh-Hant",
+
+  "//baseUrl": "正式網址。切到 improv.chiachipsy.com 之前先用 pages.dev，canonical 與 og:url 都吃這個值。",
+  "baseUrl": "https://live-the-room.pages.dev",
+
+  "//offline": "true = 只輸出告示頁，網路上讀不到內容",
+  "offline": false,
+  "offlineNotice": "這個站正在準備中。",
+
+  "//links": "所有外部連結集中在這裡。空字串 = 尚未提供，版面會自動改成不可點的待補狀態。",
+  "links": {
+    "book": "https://www.books.com.tw/products/0010972240",
+    "bookPublisher": "https://www.businessweekly.com.tw/",
+    "course": "",
+    "courseAlt": "",
+    "faq": "",
+    "oldArticle": "",
+    "authorSite": "https://www.chiachipsy.com/2015/12/cv.html",
+    "newsletter": ""
+  },
+
+  "//supabase": "與 love 站同一個專案，但用獨立的表與函式，避免 __total__ 兩站相加。先執行 supabase/schema.sql。",
+  "supabase": {
+    "url": "https://lzlqaahzdfbnagtpwari.supabase.co",
+    "publishableKey": "sb_publishable_X8n1OaJ0qEHWi6OUql18dg_DMTMSsv2",
+    "table": "page_views_improv",
+    "rpc": "increment_page_view_improv"
+  }
+}

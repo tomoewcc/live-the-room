@@ -1,0 +1,98 @@
+{
+  "//": "照片清單。src 指到 assets/ 裡的檔案；檔案不存在時自動渲染 placeholder，不會破圖。",
+  "//規格": "需求與交件方式見 PHOTO_SPEC.md。ratio 用於預留空間，避免 layout shift。",
+  "//欄位": "src=檔案路徑 / alt=替代文字 / caption=圖說（寫關係事件，不要寫「課程現場」）/ need=還沒拿到時顯示的需求說明 / credit=授權",
+
+  "hero": {
+    "src": "",
+    "ratio": "3:2",
+    "alt": "",
+    "caption": "",
+    "need": "兩個人面對面、專注看著彼此。看得出距離與身體朝向。主體佔畫面一半以上。",
+    "credit": null
+  },
+
+  "room-1-01": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 1 組・開始接觸：兩人開始對話或演練，身體朝向彼此",
+    "credit": null
+  },
+  "room-1-02": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 1 組・停頓：一方猶豫、退開或視線移開的那一秒（最重要，最容易漏拍）",
+    "credit": null
+  },
+  "room-1-03": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 1 組・調整之後：其中一方改變做法，距離或姿態明顯不同",
+    "credit": null
+  },
+
+  "room-2-01": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 2 組・開始接觸（建議取自團督演練現場）",
+    "credit": null
+  },
+  "room-2-02": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 2 組・停頓（這張會放大出血，是全站的節奏高點，請挑最好的一張）",
+    "credit": null
+  },
+  "room-2-03": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 2 組・調整之後",
+    "credit": null
+  },
+
+  "room-3-01": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 3 組・開始接觸（建議取自加速式學習／體驗式學習現場）",
+    "credit": null
+  },
+  "room-3-02": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 3 組・停頓",
+    "credit": null
+  },
+  "room-3-03": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "第 3 組・調整之後",
+    "credit": null
+  },
+
+  "field-classroom": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "教室：帶領者正在觀察、正要調整的那一刻；或旁觀者變成參與者的瞬間",
+    "credit": null
+  },
+  "field-supervision": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "團督演練：心理師與即興演員演練，其他人在旁邊觀察現場",
+    "credit": null
+  },
+  "field-handmade": {
+    "src": "", "ratio": "3:2", "alt": "", "caption": "",
+    "need": "加速式學習：手寫、移動、交換位置、排練、接力——看得出用身體在學",
+    "credit": null
+  },
+
+  "author": {
+    "src": "", "ratio": "1:1", "alt": "",
+    "need": "作者照。工作中的照片優先於形象照。",
+    "credit": null
+  },
+
+  "book-cover": {
+    "src": "", "ratio": "3:4", "alt": "《教學即興力》書封",
+    "need": "《教學即興力》書封，出版社正式檔",
+    "credit": {
+      "prefix": "書封",
+      "title": "《教學即興力》",
+      "titleUrl": "https://www.books.com.tw/products/0010972240",
+      "author": "商周出版",
+      "authorPrefix": "圖片提供",
+      "license": "",
+      "licenseUrl": ""
+    }
+  }
+}
