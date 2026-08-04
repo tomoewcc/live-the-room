@@ -46,6 +46,7 @@
      gen-soft 是第一幕條目的文字色，必須對 --bg 過 AA（4.5:1）。 */
   --gen: #46545f;
   --gen-soft: #5f6d78;
+  --gen-faint: #7d8b96;   /* 只用在文字雲的大字（WCAG 大字門檻 3:1） */
   --gen-tint: #eaeef0;
 
   /* 現場：暖赭土 */
@@ -68,6 +69,7 @@
 
     --gen: #a8bccb;
     --gen-soft: #7f929f;
+    --gen-faint: #63737e;
     --gen-tint: #232a30;
 
     --field: #dda179;
@@ -189,43 +191,74 @@ a:hover { text-decoration: none; }
 
 .act-flood { padding-block-start: clamp(2rem, 8vw, 4rem); }
 
-.flood {
-  height: 46vh;
-  min-height: 15rem;
-  max-height: 26rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border-block-end: 1px solid var(--line);
-}
-/* 上緣淡出，暗示「上面還有更多，你留不住」 */
-.flood::before {
-  content: ""; position: absolute; inset-block-start: 0; inset-inline: 0;
-  height: 5rem; z-index: 2; pointer-events: none;
-  background: linear-gradient(to bottom, var(--bg), transparent);
+/* 文字雲的容器比內文欄寬，答案才散得開 */
+.wrap-cloud {
+  width: 100%;
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  min-width: 0;
 }
 
-.flood-list { list-style: none; margin: 0; padding: 0; }
-/* 還沒出現的條目不佔空間 —— 清單才會由下往上「長高」，
-   把先前的答案一條一條推出畫面。若改成只調 opacity，
-   清單一開始就是滿高的，前十幾條會被推到裁切區外，讀者只會看到空白。 */
+.flood {
+  min-height: 62vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-block: 1.5rem;
+}
+
+/* 四散：flex-wrap 而不是絕對定位 —— 絕對定位在窄螢幕一定會疊字或破框，
+   flex 讓它自己流，再用字級、深淺與上下微偏做出散落感。 */
+.flood-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  /* 直向間距必須大於 2×nudge（±0.7rem），否則位移後上下兩排會疊在一起。
+     translateY 不佔版面空間，所以只能靠 gap 讓出餘裕。 */
+  gap: 1.85rem clamp(0.85rem, 3vw, 1.9rem);
+  width: 100%;
+}
+
+/* 位置固定不動，只淡入 —— 用 display 會讓每個字冒出來時整片重排 */
 .flood-list li {
-  display: none;
-  font-size: 1rem;
-  line-height: 1.9;
+  opacity: 0;
+  line-height: 1.35;
   color: var(--gen-soft);
+  transform: translateY(var(--nudge, 0));
+  white-space: nowrap;
+  max-width: 100%;
 }
 .flood-list li.in {
-  display: block;
-  animation: flood-in 0.28s ease both;
+  animation: flood-in 0.5s ease both;
 }
-/* 開場就填滿容器的那幾條，不做進場動畫 */
-.flood-list li.seed { animation: none; }
+.flood-list li.seed { animation: none; opacity: 1; }
 @keyframes flood-in {
-  from { opacity: 0; transform: translateY(0.5rem); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 字級五級 */
+.flood-list .s1 { font-size: 0.8125rem; }
+.flood-list .s2 { font-size: 0.9375rem; }
+.flood-list .s3 { font-size: 1.125rem; }
+.flood-list .s4 { font-size: 1.4375rem; }
+.flood-list .s5 { font-size: clamp(1.625rem, 5vw, 2.125rem); }
+
+/* 深淺三階。d3 最淡，build.mjs 只把它配給 s5（大字），
+   小字配淡色會讀不到。 */
+.flood-list .d1 { color: var(--gen); }
+.flood-list .d2 { color: var(--gen-soft); }
+.flood-list .d3 { color: var(--gen-faint); }
+
+/* 大字用襯線，讓雲有層次而不只是大小不同 */
+.flood-list .s4, .flood-list .s5 {
+  font-family: var(--font-display);
+  font-weight: 300;
 }
 
 /* 資訊流跑完之前先藏起落點文案與主標，否則讀者會先讀到答案。
@@ -705,9 +738,8 @@ a:hover { text-decoration: none; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .flood-list li { display: block; animation: none; opacity: 1; transform: none; }
-  .flood { height: auto; max-height: none; }
-  .flood::before { display: none; }
+  .flood-list li { animation: none; opacity: 1; }
+  .flood { min-height: 0; }
   .act-flood.staged .flood-stop,
   .act-flood.staged .masthead { opacity: 1; }
   .floatbar { transform: none; }

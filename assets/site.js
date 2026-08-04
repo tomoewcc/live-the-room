@@ -19,7 +19,7 @@
     var items = Array.prototype.slice.call(flood.querySelectorAll('li'));
 
     // 手機減量：條目少一點，跑完的時間才不會拖太長
-    var limit = window.innerWidth < 640 ? 24 : items.length;
+    var limit = window.innerWidth < 640 ? 18 : items.length;
     items.slice(limit).forEach(function (li) { li.remove(); });
     items = items.slice(0, limit);
 
@@ -48,14 +48,18 @@
       // staged 由 JS 加上：沒有 JS 的瀏覽器一律看到完整內容，不會空白
       if (act) act.classList.add('staged');
 
-      // 先把容器填滿再開始跑。否則清單由下往上長，前十幾條都還在畫面外，
-      // 讀者一進來會看到一片空白——答案應該是「已經在湧進來了」。
-      var list = flood.querySelector('.flood-list');
-      var i = 0;
-      while (i < items.length && list.getBoundingClientRect().height < flood.clientHeight) {
-        items[i].classList.add('in', 'seed');
-        i++;
+      // 文字雲的位置是固定的（只淡入，不佔位變化），所以要打亂顯示順序，
+      // 答案才會在整片畫面各處冒出來，而不是照閱讀順序一路排過去。
+      var order = items.map(function (_, n) { return n; });
+      for (var k = order.length - 1; k > 0; k--) {
+        var j = Math.floor(Math.random() * (k + 1));
+        var tmp = order[k]; order[k] = order[j]; order[j] = tmp;
       }
+
+      // 開場先亮四成，讀者一進來就看到「答案已經在湧進來了」，
+      // 而不是對著一片空白等它長出來。
+      var i = Math.ceil(items.length * 0.4);
+      order.slice(0, i).forEach(function (n) { items[n].classList.add('in', 'seed'); });
 
       var done = false;
       var finish = function () {
@@ -68,8 +72,8 @@
       var start = function () {
         (function step() {
           if (done) return;
-          if (i >= items.length) { finish(); return; }   // 資訊流停下來，才輪到那兩句話與主標
-          items[i].classList.add('in');
+          if (i >= order.length) { finish(); return; }   // 資訊流停下來，才輪到那兩句話與主標
+          items[order[i]].classList.add('in');
           i++;
           gap = Math.max(38, gap * 0.87);
           setTimeout(step, gap);

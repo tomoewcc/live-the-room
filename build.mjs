@@ -299,16 +299,35 @@ ${counterScript(base)}
 
 /* ---------- 各幕 ---------- */
 
+/* 文字雲的字級與深淺在建置時就決定好（用固定種子的偽亂數），
+   這樣每次 build 出來的排法一致，不會每次重新整理都跳。
+   規則：最淡的 d3 只給最大的 s5 —— 小字配淡色會讀不到，
+   WCAG 對大字的門檻是 3:1，小字則要 4.5:1。 */
+function seeded(i, salt) {
+  const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
 function act1() {
-  const items = C.act1.activities.map((a, i) =>
-    `      <li data-i="${i}">${esc(a)}</li>`).join('\n');
+  const items = C.act1.activities.map((a, i) => {
+    const r = seeded(i + 1, 1);
+    const size = r < 0.32 ? 1 : r < 0.60 ? 2 : r < 0.80 ? 3 : r < 0.93 ? 4 : 5;
+    const rs = seeded(i + 1, 2);
+    // d3（最淡）只開放給 s5
+    const shade = size === 5 ? (rs < 0.5 ? 3 : 2) : (rs < 0.55 ? 1 : 2);
+    const nudge = (seeded(i + 1, 3) * 2 - 1) * 0.7;   // 上下微偏，做出散落感
+    return `      <li class="w s${size} d${shade}" style="--nudge:${nudge.toFixed(2)}rem">${esc(a)}</li>`;
+  }).join('\n');
+
   return `<section id="${C.act1.id}" class="act act-flood" aria-labelledby="site-title">
-  <div class="wrap">
+  <div class="wrap-cloud">
     <div class="flood" data-flood>
       <ul class="flood-list" aria-hidden="true">
 ${items}
       </ul>
     </div>
+  </div>
+  <div class="wrap">
     <div class="flood-stop">
       ${C.act1.stopLines.map((l, i) => `<p class="stop-line stop-line-${i + 1}">${esc(l)}</p>`).join('\n      ')}
       <p class="pivot">${esc(C.act1.pivot)}</p>
