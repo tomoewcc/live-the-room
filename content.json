@@ -41,10 +41,10 @@
       "寫下三個問題交換回答"
     ],
     "stopLines": [
-      "AI 可以在三十秒內，給老師一百個課堂活動。",
-      "但哪一個，會讓眼前這間教室真正活起來？"
+      "AI 三十秒能給你一百個活動。",
+      "但哪一個，會讓眼前這間教室——或這間諮商室——真正活起來？"
     ],
-    "pivot": "我們不再缺少點子。我們缺少的是察覺現場、連上彼此，並做出下一個回應的能力。",
+    "pivot": "我們不缺點子。缺的是察覺現場、連上彼此，然後做出下一個回應的能力。",
     "title": "讓現場活起來",
     "tagline": "AI 時代的即興力"
   },
@@ -59,6 +59,11 @@
         "text": "Imagination is as effortless as perception, unless we think it might be ‘wrong’, which is what our education encourages us to believe.",
         "lang": "en",
         "source": "Keith Johnstone, Impro: Improvisation and the Theatre（Faber and Faber, 1979）"
+      },
+      {
+        "//": "作者自己的譯文。他把 perception 譯成「五感」，直接接上手工智慧那條線——不要改成「知覺」。",
+        "text": "想像力本來就跟五感一樣毫不費力。除非，我們認為自己想出來的東西，是錯的。而「怕做錯」，正是我們在學校裡學會的第一件事。",
+        "source": "王家齊　譯"
       }
     ],
     "quotePending": false
