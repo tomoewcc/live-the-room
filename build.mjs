@@ -426,6 +426,24 @@ function act5() {
       ? `<a class="cta${f.primary ? ' cta-primary' : ''}" href="${attr(url)}"${ext(url)}>${esc(f.linkLabel)}</a>`
       : `<span class="cta cta-pending">${esc(f.linkLabel)}<small>連結待補</small></span>`;
 
+    // 三個對話：同一個困境在不同關係裡重演。標點在文案裡，這裡只負責節奏。
+    const dialogues = f.dialogues ? `
+      <div class="dialogues">
+${f.dialogues.map((d) => `        <div class="dlg">
+${d.lines.map((l) => `          <p class="dlg-line">${esc(l)}</p>`).join('\n')}
+          <p class="dlg-punch">${esc(d.punch)}</p>
+        </div>`).join('\n')}
+      </div>` : '';
+
+    // 編號原因清單。用 <ol> 讓螢幕閱讀器讀出「第幾項，共幾項」。
+    const reasons = f.reasons ? `
+      <ol class="reasons">
+${f.reasons.map((r) => `        <li>
+          <h4>${esc(r.title)}</h4>
+${r.body.map((p) => `          <p>${esc(p)}</p>`).join('\n')}
+        </li>`).join('\n')}
+      </ol>` : '';
+
     const aiNote = f.aiNote ? `
       <div class="ai-note">
         <h4>${esc(f.aiNote.title)}</h4>
@@ -441,8 +459,10 @@ function act5() {
       <div class="field-problem">
         ${f.problem.map((p) => `<p>${esc(p)}</p>`).join('\n        ')}
       </div>
+      ${dialogues}
       ${photo(f.photo)}
       <p class="field-scene">${esc(f.scene)}</p>
+      ${reasons}
       <p class="field-how">${esc(f.how)}</p>${aiNote}
       <div class="field-exit">
         ${cta}

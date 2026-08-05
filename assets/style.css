@@ -766,3 +766,61 @@ a:hover { text-decoration: none; }
   .act-flood.staged .masthead { opacity: 1; }
   .floatbar { transform: none; }
 }
+
+/* ---------- 說對了，然後呢？：三個對話 ---------- */
+/* 同一個困境在三種關係裡重演。三欄並排讓「重演」這件事一眼看到，
+   窄螢幕改成單欄堆疊。標點在 content.json 裡，這裡只管節奏。 */
+.dialogues {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin: 2rem 0 2.5rem;
+}
+.dlg {
+  padding: 1.1rem 1.2rem 1rem;
+  border-left: 2px solid var(--rule, rgba(128,128,128,.35));
+}
+.dlg-line {
+  margin: 0 0 .35rem;
+  font-size: .95rem;
+  line-height: 1.7;
+  opacity: .8;
+}
+.dlg-punch {
+  margin: .6rem 0 0;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+/* ---------- 三個原因 ---------- */
+.reasons {
+  margin: 2rem 0 2.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: reason;
+}
+.reasons > li {
+  counter-increment: reason;
+  margin: 0 0 1.75rem;
+  padding-left: 2.6rem;
+  position: relative;
+}
+.reasons > li::before {
+  content: counter(reason);
+  position: absolute;
+  left: 0;
+  top: .1em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  opacity: .4;
+}
+.reasons h4 {
+  margin: 0 0 .5rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.reasons p {
+  margin: 0 0 .6rem;
+  line-height: 1.85;
+  opacity: .88;
+}
