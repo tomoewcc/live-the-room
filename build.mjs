@@ -611,7 +611,7 @@ if (config.offline) {
 cpSync(ASSETS, join(OUT, 'assets'), { recursive: true });
 rmSync(join(OUT, 'assets', 'photos-inbox'), { recursive: true, force: true });
 
-const homeOg = ensureOgImage(PHOTOS.hero?.src, 'home');
+const homeOg = ensureOgImage(PHOTOS['field-supervision']?.src, 'home');
 
 const jsonLd = `
 <script type="application/ld+json">${JSON.stringify({
@@ -626,7 +626,8 @@ const jsonLd = `
 
 // 作者介紹放在書之後、三個入口之前：讀者讀完論證想知道「這是誰在說」，
 // 而且它讓後面的「認識團督演練專班」更站得住腳。
-const home = [act1(), act2(), act3(), act4(), act5(), act6(), authorSection(), act7(), postsSection(posts)].join('\n\n');
+// 2026-08-05：act2（少年）與 act3（現場照片序列）移出主視覺，改寫成文章。
+const home = [act1(), act4(), act5(), act6(), authorSection(), act7(), postsSection(posts)].join('\n\n');
 
 writeFileSync(join(OUT, 'index.html'), layout({
   title: `${config.title}｜${config.tagline}`,
