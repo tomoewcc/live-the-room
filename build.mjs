@@ -500,6 +500,25 @@ function act6() {
       ${cta}
     </div>
   </div>
+${a.features ? `  <div class="wrap">
+    <ul class="features">
+${a.features.map((x) => `      <li><span class="feat-num">${esc(x.num)}</span><h4>${esc(x.label)}</h4><p>${esc(x.body)}</p></li>`).join('\n')}
+    </ul>
+  </div>` : ''}
+${a.endorsement ? `  <div class="wrap">
+    <blockquote class="endorse"><p>${inline(a.endorsement.text)}</p><cite>${esc(a.endorsement.who)}<span>${esc(a.endorsement.title)}</span></cite></blockquote>
+  </div>` : ''}
+${a.podcasts ? `  <div class="wrap">
+    <p class="eyebrow">用聽的</p>
+${a.podcasts.map((s) => `    <p class="pod-show">${esc(s.show)}</p>
+    <ul class="pods">
+${s.episodes.map((e) => `      <li><a href="${attr(e.url)}"${ext(e.url)}>${esc(e.title)}</a></li>`).join('\n')}
+    </ul>`).join('\n')}
+  </div>` : ''}
+  <div class="wrap book-tail">
+    <div>
+    </div>
+  </div>
 </section>`;
 }
 
@@ -543,6 +562,26 @@ ${exits}
 }
 
 /* ---------- 文章卡片（建置時寫死進 HTML） ---------- */
+
+/** 常見問答。原生 <details>，不靠 JS；答案一定在 HTML 裡，爬蟲與 AI 讀得到。 */
+function faqSection() {
+  const f = C.faq;
+  if (!f || !f.items || !f.items.length) return '';
+  return `<section id="faq" class="act act-faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <p class="eyebrow" id="faq-h">${esc(f.eyebrow)}</p>
+    ${f.intro ? `<p class="lede">${esc(f.intro)}</p>` : ''}
+    <div class="faq-list">
+${f.items.map((q, i) => `      <details${i === 0 ? ' open' : ''}>
+        <summary>${esc(q.q)}</summary>
+        <div class="faq-a">
+${q.a.map((p) => `          <p>${inline(p)}</p>`).join('\n')}
+        </div>
+      </details>`).join('\n')}
+    </div>
+  </div>
+</section>`;
+}
 
 function postsSection(posts) {
   const p = C.posts;
@@ -633,21 +672,69 @@ rmSync(join(OUT, 'assets', 'photos-inbox'), { recursive: true, force: true });
 
 const homeOg = ensureOgImage(PHOTOS['field-supervision']?.src, 'home');
 
+const PERSON_ID = 'https://www.chiachipsy.com/2015/12/cv.html#person';
+
+/* 首頁結構化資料。用 @graph 把四個實體綁在一起：
+   - Person 沿用 chiachipsy 簡歷頁的 @id，兩個站在機器眼中是同一個人
+   - Book 帶 ISBN 與通路，讓 AI 回答「有沒有這方面的書」時抓得到
+   - FAQPage 的答案就是頁面上那 11 則，不另外編造 */
 const jsonLd = `
 <script type="application/ld+json">${JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: config.title,
-  description: config.description,
-  inLanguage: 'zh-TW',
-  url: config.baseUrl || undefined,
-  author: { '@type': 'Person', name: config.author, jobTitle: config.authorTitle },
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${config.baseUrl}/#website`,
+      url: config.baseUrl || undefined,
+      name: config.title,
+      description: config.description,
+      inLanguage: 'zh-Hant-TW',
+      publisher: { '@id': PERSON_ID },
+    },
+    {
+      '@type': ['WebPage', 'FAQPage'],
+      '@id': config.baseUrl || undefined,
+      url: config.baseUrl || undefined,
+      name: `${config.title}｜${config.tagline}`,
+      description: config.description,
+      inLanguage: 'zh-Hant-TW',
+      isPartOf: { '@id': `${config.baseUrl}/#website` },
+      mainEntity: (C.faq?.items || []).map((q) => ({
+        '@type': 'Question',
+        name: q.q,
+        acceptedAnswer: { '@type': 'Answer', text: q.a.join(' ') },
+      })),
+    },
+    {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: config.author,
+      jobTitle: config.authorTitle,
+      url: 'https://www.chiachipsy.com/2015/12/cv.html',
+      knowsAbout: ['應用即興劇', '心理治療師專業訓練', '教學設計', '體驗式學習', '加速式學習'],
+      sameAs: ['https://www.chiachipsy.com/', 'https://www.chiachiwang.com/'],
+    },
+    {
+      '@type': 'Book',
+      '@id': 'https://www.chiachiwang.com/my-new-book#book',
+      name: '教學即興力：應用「即興劇」破解教學難題、活絡課堂氛圍、強化學習成效',
+      alternateName: '教學即興力',
+      isbn: '9786263188860',
+      numberOfPages: 304,
+      bookFormat: 'https://schema.org/Paperback',
+      inLanguage: 'zh-Hant-TW',
+      datePublished: '2023-11-11',
+      publisher: { '@type': 'Organization', name: '商周出版' },
+      author: [{ '@id': PERSON_ID }, { '@type': 'Person', name: '陳譽仁' }],
+      sameAs: ['https://www.books.com.tw/products/0010972240'],
+    },
+  ],
 })}</script>`;
 
 // 作者介紹放在書之後、三個入口之前：讀者讀完論證想知道「這是誰在說」，
 // 而且它讓後面的「認識團督演練專班」更站得住腳。
 // 2026-08-05：act2（少年）與 act3（現場照片序列）移出主視覺，改寫成文章。
-const home = [act1(), act4(), act5(), act6(), authorSection(), act7(), postsSection(posts)].join('\n\n');
+const home = [act1(), act4(), act5(), act6(), faqSection(), authorSection(), act7(), postsSection(posts)].join('\n\n');
 
 writeFileSync(join(OUT, 'index.html'), layout({
   title: `${config.title}｜${config.tagline}`,

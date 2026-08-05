@@ -824,3 +824,70 @@ a:hover { text-decoration: none; }
   line-height: 1.85;
   opacity: .88;
 }
+
+/* ---------- 書：三大特色 ---------- */
+.features {
+  display: grid;
+  gap: 1.5rem 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.features > li { margin: 0; }
+.feat-num {
+  display: block;
+  font-size: 2.4rem;
+  line-height: 1;
+  font-weight: 700;
+  opacity: .35;
+  font-variant-numeric: tabular-nums;
+}
+.features h4 { margin: .35rem 0 .5rem; font-size: 1rem; }
+.features p { margin: 0; font-size: .93rem; line-height: 1.8; opacity: .85; }
+
+/* ---------- 書：推薦語 ---------- */
+.endorse {
+  margin: 3rem 0 0;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--rule, rgba(128,128,128,.35));
+}
+.endorse p { margin: 0 0 .9rem; line-height: 1.9; }
+.endorse cite { font-style: normal; font-size: .9rem; opacity: .7; }
+.endorse cite span { display: block; opacity: .8; }
+
+/* ---------- 書：Podcast ---------- */
+.pod-show { margin: 2rem 0 .5rem; font-size: .9rem; opacity: .6; }
+.pods { margin: 0; padding: 0; list-style: none; }
+.pods > li { margin: 0 0 .4rem; }
+.pods a { font-size: .95rem; }
+
+/* ---------- 常見問答 ---------- */
+/* 原生 details：不用 JS，答案永遠在 HTML 裡，爬蟲與 AI 都讀得到。 */
+.faq-list { margin: 2rem 0 0; }
+.faq-list details {
+  border-top: 1px solid var(--rule, rgba(128,128,128,.28));
+  padding: 1rem 0;
+}
+.faq-list details:last-child { border-bottom: 1px solid var(--rule, rgba(128,128,128,.28)); }
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.6;
+  list-style: none;
+  padding-right: 2rem;
+  position: relative;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: -.1em;
+  font-weight: 400;
+  opacity: .5;
+  transition: transform .15s;
+}
+.faq-list details[open] summary::after { content: '−'; }
+.faq-a { padding: .9rem 0 .2rem; }
+.faq-a p { margin: 0 0 .7rem; line-height: 1.9; opacity: .88; }
