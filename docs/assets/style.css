@@ -772,8 +772,7 @@ a:hover { text-decoration: none; }
    窄螢幕改成單欄堆疊。標點在 content.json 裡，這裡只管節奏。 */
 .dialogues {
   display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.1rem;
   margin: 2rem 0 2.5rem;
 }
 .dlg {
