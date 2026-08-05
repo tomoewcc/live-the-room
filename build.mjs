@@ -396,8 +396,9 @@ function act4() {
     </div>
   </div>`).join('\n');
 
+  // lang="en" 讓瀏覽器與螢幕閱讀器用正確的語言處理原文引句
   const quotes = a.quotes.map((q) =>
-    `      <blockquote class="quote"><p>${esc(q.text)}</p><cite>${esc(q.source)}</cite></blockquote>`
+    `      <blockquote class="quote${q.lang ? ` quote-${q.lang}` : ''}"${q.lang ? ` lang="${attr(q.lang)}"` : ''}><p>${esc(q.text)}</p><cite>${esc(q.source)}</cite></blockquote>`
   ).join('\n');
 
   const pending = a.quotePending

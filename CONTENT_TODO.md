@@ -73,9 +73,15 @@
 
 ## 7. 引文
 
-- [ ] **Keith Johnstone 引文**：原文、版本、頁碼
-      在三者齊備前，第四幕該位置維持空的 placeholder（`content.json` → `act4.quotePending`）
-- [x] 王家齊自己的兩句（已使用）
+- [x] **Keith Johnstone 引文**：原文與出處已核實並上線（2026-08-04）
+      `Imagination is as effortless as perception, unless we think it might be ‘wrong’,
+      which is what our education encourages us to believe.`
+      出處：*Impro: Improvisation and the Theatre*（Faber and Faber, 1979）
+      ⚠️ **網路引文站流傳的「Routledge, 1981」是錯的**——那是把著作權年份（© 1979, 1981）
+      誤當成版本年份，再安上錯誤的出版社。作者手上那本的版權頁寫的是
+      Faber and Faber 原版、Bloomsbury（Methuen Drama，ISBN 978-0-7136-8701-9）發行。
+- [ ] **頁碼**：作者讀的是 ePub，頁碼會隨字級流動，不能用。要拿紙本或固定頁碼的 PDF 對過再補
+- [x] 王家齊自己的兩句（已使用，其中一句明確標示為「轉譯，非翻譯」）
 
 ## 8. 網站目標
 

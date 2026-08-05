@@ -130,18 +130,23 @@
         ]
       }
     ],
+    "//quotes": "KJ 那則已核實（2026-08-04，依作者手上的版權頁）。出版社不是網路引文站流傳的 Routledge——那是把著作權年份 1981 誤當版本年份。頁碼待補：作者讀的是 ePub，頁碼會流動，需拿紙本對過才能加。",
     "quotes": [
       {
-        "text": "人際的事，光用腦是想不通的。有些東西，要用身體試試看。",
-        "source": "王家齊"
+        "text": "Imagination is as effortless as perception, unless we think it might be ‘wrong’, which is what our education encourages us to believe.",
+        "lang": "en",
+        "source": "Keith Johnstone, Impro: Improvisation and the Theatre（Faber and Faber, 1979）"
       },
       {
         "text": "想像力不只是努力製造腦中的東西。它也來自我們是否允許自己看見，眼前已經存在的可能。",
-        "source": "王家齊（轉譯）"
+        "source": "王家齊（讀 Johnstone 之後的轉譯，非翻譯）"
+      },
+      {
+        "text": "人際的事，光用腦是想不通的。有些東西，要用身體試試看。",
+        "source": "王家齊"
       }
     ],
-    "//quotePending": "Keith Johnstone 引文位置。取得原文、版本與頁碼前，pending 保持 true，版面不會渲染。",
-    "quotePending": true
+    "quotePending": false
   },
 
   "act5": {

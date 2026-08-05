@@ -466,7 +466,16 @@ a:hover { text-decoration: none; }
   line-height: 1.65;
   margin-bottom: 0.6rem;
 }
-.quote cite { font-size: 0.9375rem; color: var(--muted); font-style: normal; }
+.quote cite { font-size: 0.9375rem; color: var(--muted); font-style: normal; display: block; margin-block-start: 0.35rem; }
+
+/* 原文引句：拉丁字用系統襯線比 Noto Sans TC 的西文好看，
+   而且視覺上跟中文段落分開，一眼看得出這是引用。 */
+.quote-en p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.125rem, 4.5vw, 1.3125rem);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
 
 .pending {
   margin-block-start: 2rem;
