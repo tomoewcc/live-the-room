@@ -11,11 +11,11 @@
     "credit": null
   },
   "room-01": {
-    "src": "",
-    "ratio": "3:2",
-    "alt": "",
-    "caption": "",
-    "need": "還沒回話的那一秒：一個人在聽，話已經到嘴邊但還沒說出來",
+    "src": "assets/photos/room-01-pair-practice.jpg",
+    "ratio": "16:9",
+    "alt": "兩位女性面對面坐在折疊椅上演練，其中一位正在說話，另一位背對鏡頭聽著；牆上的白板寫滿手寫筆記",
+    "caption": "兩個人面對面坐著，一個在說，一個在聽。周圍的椅子是空的。",
+    "need": "還沒回話的那一秒",
     "credit": null
   },
   "room-02": {
@@ -23,45 +23,45 @@
     "ratio": "3:2",
     "alt": "",
     "caption": "",
-    "need": "注意力在身體上：兩人面對面做練習，看得出來在感覺而不是在想（這張會放大出血，是全站的節奏高點）",
+    "need": "⏸ 待授權：跪在地上拿麥克筆畫、對面的人低頭看講義（2048×1365，是全站出血高點）。作者尚未提供場合與授權。",
     "credit": null
   },
   "room-03": {
     "src": "",
-    "ratio": "3:2",
+    "ratio": "3:4",
     "alt": "",
     "caption": "",
-    "need": "接上了：兩個人以上的注意力落在同一件事上，距離或姿態明顯改變",
+    "need": "⏸ 待授權：盤腿坐著、雙手在胸前比出一個形狀，注意力全在自己的手上（1200×1600 直幅）。作者尚未提供場合與授權。",
     "credit": null
   },
   "field-classroom": {
-    "src": "",
+    "src": "assets/photos/field-classroom.jpg",
     "ratio": "3:2",
-    "alt": "",
-    "caption": "",
+    "alt": "明亮的教室裡，王家齊站在右側比出手勢說明，三位學員站著看他；牆上貼著手寫海報",
+    "caption": "他比出下一個動作。最靠近的學員雙手交握在身前，還沒動。",
     "need": "教室：帶領者正在觀察、正要調整的那一刻；或旁觀者變成參與者的瞬間",
     "credit": null
   },
   "field-supervision": {
-    "src": "",
-    "ratio": "3:2",
-    "alt": "",
-    "caption": "",
+    "src": "assets/photos/field-supervision.jpg",
+    "ratio": "16:9",
+    "alt": "團督演練現場：一位成員坐著演練，數人在旁觀察，有人低頭記筆記，手機架在腳架上錄影",
+    "caption": "一組人在演練，其他人在旁邊看著。手機架在腳架上，把整段錄下來。",
     "need": "團督演練：心理師與即興演員演練，其他人在旁邊觀察現場",
     "credit": null
   },
   "field-handmade": {
-    "src": "",
-    "ratio": "3:2",
-    "alt": "",
-    "caption": "",
+    "src": "assets/photos/field-handmade.jpg",
+    "ratio": "3:4",
+    "alt": "王家齊坐在地板上把一排寫著「收尾」「校對」「評估」的卡牌排成路徑，三位學員跪坐在地上看",
+    "caption": "教學流程被攤在地板上。三個人跪著，用眼睛沿著那條路走一遍。",
     "need": "加速式學習：手寫、移動、交換位置、排練、接力——看得出用身體在學",
     "credit": null
   },
   "author": {
-    "src": "",
-    "ratio": "1:1",
-    "alt": "",
+    "src": "assets/photos/author.jpg",
+    "ratio": "3:4",
+    "alt": "王家齊坐在椅子上，手裡拿著一疊紙，另一手抬起正在說話",
     "need": "作者照。工作中的照片優先於形象照。",
     "credit": null
   },
