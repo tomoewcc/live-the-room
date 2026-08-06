@@ -461,7 +461,7 @@ ${r.body.map((p) => `          <p>${esc(p)}</p>`).join('\n')}
       </div>
       ${dialogues}
       ${photo(f.photo)}
-      <p class="field-scene">${esc(f.scene)}</p>
+      ${f.scene ? `<p class="field-scene">${esc(f.scene)}</p>` : ''}
       ${reasons}
       <p class="field-how">${esc(f.how)}</p>${aiNote}
       <div class="field-exit">
