@@ -890,3 +890,44 @@ a:hover { text-decoration: none; }
 .faq-list details[open] summary::after { content: '−'; }
 .faq-a { padding: .9rem 0 .2rem; }
 .faq-a p { margin: 0 0 .7rem; line-height: 1.9; opacity: .88; }
+
+/* ========== 三段式版面：手機 / 平板 / 桌機 ==========
+   原本 --content 固定 600px，不管視窗多寬都一樣，所以在大螢幕上
+   看起來像手機版。這裡讓欄寬隨裝置分三級成長，但仍守住中文的
+   易讀行長（約 30→40 字），不讓文字拉成一整條。
+   同時讓「不是文字」的區塊（四宮格特色、書、三個對話）在桌機
+   突破欄寬，頁面才用得到螢幕。 */
+
+/* ---- 平板：768px 起 ---- */
+@media (min-width: 48rem) {
+  :root { --content: 41rem; }        /* 656px ≈ 33 字 */
+}
+
+/* ---- 桌機：1024px 起 ---- */
+@media (min-width: 64rem) {
+  :root { --content: 44rem; }        /* 704px ≈ 36 字 */
+
+  /* 非文字區塊突破欄寬，置中對齊視窗。
+     .book-wrap / .author-wrap 同時掛著 .wrap，所以要解掉 max-width。
+     它們是圖文並排，用較保守的 56rem，文字側才不會拉太長。 */
+  .features {
+    --breakout: min(var(--wide), calc(100vw - 2 * var(--gutter)));
+    width: var(--breakout);
+    max-width: none;
+    margin-inline: calc((100% - var(--breakout)) / 2);
+  }
+  .book-wrap,
+  .author-wrap {
+    --breakout: min(56rem, calc(100vw - 2 * var(--gutter)));
+    width: var(--breakout);
+    max-width: none;
+    margin-inline: calc((100% - var(--breakout)) / 2);
+  }
+  /* 四宮格在桌機一定排成一列 */
+  .features { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---- 大螢幕：1440px 起 ---- */
+@media (min-width: 90rem) {
+  :root { --content: 46rem; }        /* 736px ≈ 38 字 */
+}
