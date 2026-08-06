@@ -444,6 +444,15 @@ ${r.body.map((p) => `          <p>${esc(p)}</p>`).join('\n')}
         </li>`).join('\n')}
       </ol>` : '';
 
+    // 共同帶領者。放在方法說明之後、AI 對照之前——先說清楚「跟誰演練」，
+    // 「跟真的即興演員演練」這句才站得住。
+    const partner = f.partner ? `
+      <div class="partner">
+        <h4>${esc(f.partner.role)}</h4>
+        ${paras(f.partner.body)}
+        ${f.partner.url ? `<p class="note"><a href="${attr(f.partner.url)}"${ext(f.partner.url)}>${esc(f.partner.linkLabel || '個人網站')}</a></p>` : ''}
+      </div>` : '';
+
     const aiNote = f.aiNote ? `
       <div class="ai-note">
         <h4>${esc(f.aiNote.title)}</h4>
@@ -463,7 +472,7 @@ ${r.body.map((p) => `          <p>${esc(p)}</p>`).join('\n')}
       ${photo(f.photo)}
       ${f.scene ? `<p class="field-scene">${esc(f.scene)}</p>` : ''}
       ${reasons}
-      <p class="field-how">${esc(f.how)}</p>${aiNote}
+      <p class="field-how">${esc(f.how)}</p>${partner}${aiNote}
       <div class="field-exit">
         ${cta}
         ${f.linkNote ? `<p class="note">${esc(f.linkNote)}</p>` : ''}

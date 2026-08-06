@@ -931,3 +931,14 @@ a:hover { text-decoration: none; }
 @media (min-width: 90rem) {
   :root { --content: 46rem; }        /* 736px ≈ 38 字 */
 }
+
+/* ---------- 共同帶領者 ---------- */
+.partner {
+  margin: 2rem 0 0;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--line, rgba(128,128,128,.3));
+  border-radius: var(--radius, 10px);
+}
+.partner h4 { margin: 0 0 .8rem; font-size: .875rem; letter-spacing: .06em; opacity: .6; }
+.partner p { margin: 0 0 .8rem; line-height: 1.9; }
+.partner p:last-child { margin-bottom: 0; }
