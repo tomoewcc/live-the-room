@@ -803,6 +803,39 @@ ${p.html}
   }));
 }
 
+/* ---------- robots.txt 與 sitemap.xml ---------- */
+/* Cloudflare Pages 對不存在的路徑會回退到 index.html（HTTP 200 但吐首頁），
+   所以少了這兩個檔不會報 404，很容易沒發現。2026-08-06 補上。 */
+
+const base = (config.baseUrl || '').replace(/\/$/, '');
+
+writeFileSync(join(OUT, 'robots.txt'),
+`User-agent: *
+Allow: /
+
+Sitemap: ${base}/sitemap.xml
+`);
+
+const sitemapUrls = [
+  { loc: `${base}/`, lastmod: new Date().toISOString().slice(0, 10), priority: '1.0' },
+  ...posts.map((p) => ({
+    loc: `${base}/posts/${p.slug}/`,
+    lastmod: p.updated || p.date,
+    priority: '0.8',
+  })),
+];
+
+writeFileSync(join(OUT, 'sitemap.xml'),
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls.map((u) => `  <url>
+    <loc>${u.loc}</loc>
+    <lastmod>${u.lastmod}</lastmod>
+    <priority>${u.priority}</priority>
+  </url>`).join('\n')}
+</urlset>
+`);
+
 /* ---------- 建置報告 ---------- */
 
 console.log(`✓ docs/index.html`);
