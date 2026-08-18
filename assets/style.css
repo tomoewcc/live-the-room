@@ -229,6 +229,15 @@ a:hover { text-decoration: none; }
   white-space: nowrap;
   max-width: 100%;
 }
+/* 手機減量必須在 CSS 做，不能等 site.js 去 remove。
+   site.js 是 defer，跑的時候畫面已經畫好了；它在 innerWidth < 640 時砍掉第 15 項之後的
+   21 個 li，結果是下面整段往上跳 —— 實測 CLS 0.343（Lighthouse 行動版）。
+   以前沒被發現，是因為 Google Fonts 阻擋算繪 10 秒，script 早就跑完才第一次繪製，
+   把這個位移整個蓋掉了。拿掉 Google Fonts 之後它才現形。
+   門檻要跟 site.js 的 `window.innerWidth < 640` 一致。 */
+@media (max-width: 639px) {
+  .flood-list li:nth-child(n+15) { display: none; }
+}
 .flood-list li.in {
   animation: flood-in 0.5s ease both;
 }
