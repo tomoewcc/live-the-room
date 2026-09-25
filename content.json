@@ -196,19 +196,33 @@
     },
     "podcasts": [
       {
+        "show": "劉軒的 How to 人生學",
+        "episodes": [
+          {
+            "title": "EP510｜計畫趕不上變化？用即興力接住人生的意外",
+            "url": "https://player.soundon.fm/p/17e025f5-3a87-41b5-8cff-af804ad195f3/episodes/e8a6a53f-68ad-432b-ac48-6212eac08049",
+            "embed": "https://player.soundon.fm/embed/?podcast=17e025f5-3a87-41b5-8cff-af804ad195f3&episode=e8a6a53f-68ad-432b-ac48-6212eac08049",
+            "video": "https://www.youtube.com/watch?v=xvl0mq05Pz4"
+          }
+        ]
+      },
+      {
         "show": "歐陽立中 Life 不下課",
         "episodes": [
           {
             "title": "EP.407｜為什麼你需要擁有「即興力」？",
-            "url": "https://player.soundon.fm/p/d08a7480-f9ee-444c-a0e5-49202327aeff/episodes/b45b0fab-2420-4036-b00b-f9fa321413c6"
+            "url": "https://player.soundon.fm/p/d08a7480-f9ee-444c-a0e5-49202327aeff/episodes/b45b0fab-2420-4036-b00b-f9fa321413c6",
+            "embed": "https://player.soundon.fm/embed/?podcast=d08a7480-f9ee-444c-a0e5-49202327aeff&episode=b45b0fab-2420-4036-b00b-f9fa321413c6"
           },
           {
             "title": "EP.408｜讓學生上到不想下課的「即興備課法」！",
-            "url": "https://player.soundon.fm/p/d08a7480-f9ee-444c-a0e5-49202327aeff/episodes/15940938-7b5b-4035-9124-c1a576e8133d"
+            "url": "https://player.soundon.fm/p/d08a7480-f9ee-444c-a0e5-49202327aeff/episodes/15940938-7b5b-4035-9124-c1a576e8133d",
+            "embed": "https://player.soundon.fm/embed/?podcast=d08a7480-f9ee-444c-a0e5-49202327aeff&episode=15940938-7b5b-4035-9124-c1a576e8133d"
           },
           {
             "title": "EP.417｜3 個超好用的即興活動，從此不怕課堂冷！",
-            "url": "https://player.soundon.fm/p/d08a7480-f9ee-444c-a0e5-49202327aeff/episodes/f28b9565-977e-46d8-94fa-362b0656e80b"
+            "url": "https://player.soundon.fm/p/d08a7480-f9ee-444c-a0e5-49202327aeff/episodes/f28b9565-977e-46d8-94fa-362b0656e80b",
+            "embed": "https://player.soundon.fm/embed/?podcast=d08a7480-f9ee-444c-a0e5-49202327aeff&episode=f28b9565-977e-46d8-94fa-362b0656e80b"
           }
         ]
       },
@@ -217,7 +231,8 @@
         "episodes": [
           {
             "title": "EP082｜教學即興力",
-            "url": "https://player.soundon.fm/p/bd1e64af-25db-4cca-991e-25537f8de343/episodes/3de844f8-db87-4cfc-bd08-3eac16256d2c"
+            "url": "https://player.soundon.fm/p/bd1e64af-25db-4cca-991e-25537f8de343/episodes/3de844f8-db87-4cfc-bd08-3eac16256d2c",
+            "embed": "https://player.soundon.fm/embed/?podcast=bd1e64af-25db-4cca-991e-25537f8de343&episode=3de844f8-db87-4cfc-bd08-3eac16256d2c"
           }
         ]
       }
@@ -351,7 +366,7 @@
       {
         "q": "我比較喜歡用「聽」的來學習，教學即興力有 Podcast 可以參考嗎？",
         "a": [
-          "有的。歐陽立中的「Life 不下課」有三集，譽仁老師的「吵鬧的解答」有一集——連結都放在上面《教學即興力》那一段。"
+          "有的。劉軒的「How to 人生學」EP510 談即興力，歐陽立中的「Life 不下課」有三集，譽仁老師的「吵鬧的解答」有一集——播放器都放在上面《教學即興力》那一段，按了就能聽。"
         ]
       }
     ]

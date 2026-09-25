@@ -518,7 +518,8 @@ ${a.podcasts ? `  <div class="wrap">
     <p class="eyebrow">用聽的</p>
 ${a.podcasts.map((s) => `    <p class="pod-show">${esc(s.show)}</p>
     <ul class="pods">
-${s.episodes.map((e) => `      <li><a href="${attr(e.url)}"${ext(e.url)}>${esc(e.title)}</a></li>`).join('\n')}
+${s.episodes.map((e) => `      <li><a href="${attr(e.url)}"${ext(e.url)}>${esc(e.title)}</a>${e.video ? `　<a class="pod-video" href="${attr(e.video)}"${ext(e.video)}>影像版 ↗</a>` : ''}${e.embed ? `
+        <iframe class="pod-embed" src="${attr(e.embed)}" title="${attr(s.show + '｜' + e.title)}" loading="lazy"></iframe>` : ''}</li>`).join('\n')}
     </ul>`).join('\n')}
   </div>` : ''}
   <div class="wrap book-tail">
