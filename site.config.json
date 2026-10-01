@@ -13,7 +13,7 @@
   "offlineNotice": "這個站正在準備中。",
   "//links": "所有外部連結集中在這裡。空字串 = 尚未提供，版面會自動改成不可點的待補狀態。",
   "links": {
-    "book": "https://www.books.com.tw/products/0010972240",
+    "book": "https://www.chiachiwang.com/my-new-book",
     "bookPublisher": "https://www.businessweekly.com.tw/",
     "course": "https://docs.google.com/forms/d/e/1FAIpQLSdBiFcDadi9uH6mLoVIrJhI6a_FMghFZzbrOQU9dBicf6fapQ/viewform",
     "courseAlt": "",
